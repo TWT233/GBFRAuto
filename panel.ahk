@@ -2,7 +2,7 @@
 
 class GBFRPanel {
     ; internal GUI
-    g => Gui
+    g := 0
 
     v := { ; Value, for those data flows out only
         check: 1,
@@ -21,7 +21,6 @@ class GBFRPanel {
         g.Add("Text", "w200 vWINDOW_INFO")
 
         g.Add("Text", "w200 vTIMES_REPORT", "`n`r`n`r")
-        this.RefreshTimesReport()
 
         v := this.v
 
