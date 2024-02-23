@@ -32,21 +32,12 @@ DATA := {
 ; main
 Init()
 
-loop {
-    Sleep 500
-    if G.v.check == 1 {
-        M.OnFound(PATH.CHECK, F_CB_CHECK)
-    }
-    if G.v.back == 1 {
-        M.OnFound(PATH.BACK, F_CB_BACK)
-    }
-    if G.v.mission == 1 {
-        M.OnFound(PATH.MISSION, F_CB_MISSION)
-    }
-    if G.v.autokill == 1 {
-        M.OnFound(PATH.AUTOKILL, F_CB_AUTOKILL)
-    }
-}
+M.Add(Condition(PATH.CHECK, CB_CHECK, (*) => G.v.check))
+M.Add(Condition(PATH.BACK, CB_BACK, (*) => G.v.back))
+M.Add(Condition(PATH.MISSION, CB_MISSION, (*) => G.v.mission))
+M.Add(Condition(PATH.AUTOKILL, CB_AUTOKILL, (*) => G.v.autokill))
+
+M.Run()
 
 ; init
 
@@ -64,7 +55,8 @@ Init() {
 ; call backs on search found
 ;;;;;;;;;;;;;
 
-F_CB_BACK() {
+CB_BACK(*) {
+    Sleep 1000
     WrappedClick("LButton", 100)
     Sleep 1000
     WrappedClick("LButton", 100)
@@ -74,7 +66,8 @@ F_CB_BACK() {
     Refresh()
 }
 
-F_CB_CHECK() {
+CB_CHECK(*) {
+    Sleep 1000
     WrappedClick("w")
     Sleep 1000
     WrappedClick("LButton")
@@ -83,7 +76,7 @@ F_CB_CHECK() {
     Refresh()
 }
 
-F_CB_MISSION() {
+CB_MISSION(*) {
     loop {
         WrappedClick("LButton")
         Sleep 200
@@ -93,7 +86,8 @@ F_CB_MISSION() {
     Refresh()
 }
 
-F_CB_AUTOKILL() {
+CB_AUTOKILL(*) {
+    WrappedClick("w", 2500)
     loop {
         loop 120 {
             WrappedClick("LButton", 4)
@@ -107,8 +101,7 @@ F_CB_AUTOKILL() {
 ;;;;;;;;;;;;;
 
 OnGameNameChanged(edit, info) {
-    GAME_NAME := edit.Value
-    M.SetName(GAME_NAME)
+    M.name := edit.Value
     Refresh()
 }
 
