@@ -1,4 +1,4 @@
-﻿#Requires AutoHotkey v2.0
+#Requires AutoHotkey v2.0
 
 ; always an emergency exit
 [:: ExitApp
@@ -106,9 +106,9 @@ InitWindowInfo() {
 ;;;;;;;;;;;;;
 
 F_CB_BACK() {
-    WrappedClick("LButton")
+    WrappedClick("LButton", 100)
     Sleep 1000
-    WrappedClick("LButton")
+    WrappedClick("LButton", 100)
     Sleep 1000
 
     TIMES.BACK += 1
