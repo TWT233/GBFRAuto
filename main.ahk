@@ -86,7 +86,25 @@ CB_MISSION(*) {
 }
 
 CB_AUTOKILL(*) {
-    WrappedClick("w", 2500)
+    if G.v.step_for_slime{
+        loop 3{
+            SendEvent "{w Down}"
+            SendEvent "{e Down}"
+            Sleep 50
+            SendEvent "{e up}"
+            SendEvent "{w up}"
+            Sleep 500
+        }
+        Sleep 1100
+        loop 2{
+            SendEvent "{w Down}"
+            SendEvent "{e Down}"
+            Sleep 50
+            SendEvent "{e up}"
+            SendEvent "{w up}"
+            Sleep 500
+        }
+    }
     loop {
         loop 120 {
             WrappedClick("LButton", 4)

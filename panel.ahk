@@ -9,6 +9,7 @@ class GBFRPanel {
         back: 1,
         mission: 1,
         autokill: 0,
+        step_for_slime: 0
     }
 
     __New(game_name, on_change_name, on_close) {
@@ -34,8 +35,11 @@ class GBFRPanel {
         g.Add("CheckBox", "vCB_NEED_CHECK Checked", "自动继续挑战")
             .OnEvent("Click", (cb, *) => (v.check := cb.Value))
 
-        g.Add("CheckBox", "vCB_NEED_AUTOKILL", "自动连发平A（仅限史莱姆本）")
+        g.Add("CheckBox", "vCB_NEED_AUTOKILL", "自动连发平A")
             .OnEvent("Click", (cb, *) => (v.autokill := cb.Value))
+
+        g.Add("CheckBox", "vCB_NEED_STEP_FOR_SLIME", "自动连发平A前先前滚五下`n（史莱姆大军特化）")
+            .OnEvent("Click", (cb, *) => (v.step_for_slime := cb.Value))
     }
 
     Show() {
