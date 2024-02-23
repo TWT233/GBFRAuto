@@ -57,20 +57,16 @@ Init() {
 ;;;;;;;;;;;;;
 
 CB_BACK(*) {
-    Sleep 500
-    WrappedClick("LButton")
-    Sleep 500
-    WrappedClick("LButton")
+    EventClick("LButton", , 500)
+    EventClick("LButton", , 500)
 
     DATA.times.back++
     Refresh()
 }
 
 CB_CHECK(*) {
-    Sleep 500
-    WrappedClick("w")
-    Sleep 500
-    WrappedClick("LButton")
+    EventClick("w", , 500)
+    EventClick("LButton", , 500)
 
     DATA.times.check++
     Refresh()
@@ -78,8 +74,7 @@ CB_CHECK(*) {
 
 CB_MISSION(*) {
     loop {
-        WrappedClick("LButton")
-        Sleep 200
+        EventClick("LButton", , , 200)
     } until (M.Search(PATH.MISSION) == 0)
 
     DATA.times.mission++
@@ -87,8 +82,8 @@ CB_MISSION(*) {
 }
 
 CB_AUTOKILL(*) {
-    if G.v.step_for_slime{
-        loop 3{
+    if G.v.step_for_slime {
+        loop 3 {
             SendEvent "{w Down}"
             SendEvent "{e Down}"
             Sleep 50
@@ -97,7 +92,7 @@ CB_AUTOKILL(*) {
             Sleep 500
         }
         Sleep 1100
-        loop 2{
+        loop 2 {
             SendEvent "{w Down}"
             SendEvent "{e Down}"
             Sleep 50
@@ -108,8 +103,7 @@ CB_AUTOKILL(*) {
     }
     loop {
         loop 120 {
-            WrappedClick("LButton", 4)
-            Sleep 4
+            EventClick("LButton", 4, , 4)
         }
     } until (M.Search(PATH.AUTOKILL) == 0)
 }
