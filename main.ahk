@@ -1,5 +1,6 @@
 ﻿#Requires AutoHotkey v2.0
 
+#Include utils.ahk
 #Include panel.ahk
 #Include matcher.ahk
 
@@ -134,14 +135,4 @@ RefreshWindowInfo() {
     h := 0
     M.CheckWindow(&w, &h)
     G.UpdateWindowInfo(w, h)
-}
-
-WrappedClick(key, len := 50) {
-    SendEvent "{" key " Down}"
-    Sleep len
-    SendEvent "{" key " up}"
-}
-
-OnClose(_) {
-    ExitApp
 }
