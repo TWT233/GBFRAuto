@@ -1,7 +1,7 @@
 #Requires AutoHotkey v2.0
 
 class Matcher {
-    name => String ; attached window name
+    name := "" ; attached window name
 
     __New(name) {
         this.SetName(name)
