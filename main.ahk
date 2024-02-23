@@ -56,20 +56,19 @@ Init() {
 ;;;;;;;;;;;;;
 
 CB_BACK(*) {
-    Sleep 1000
-    WrappedClick("LButton", 100)
-    Sleep 1000
-    WrappedClick("LButton", 100)
-    Sleep 1000
+    Sleep 500
+    WrappedClick("LButton")
+    Sleep 500
+    WrappedClick("LButton")
 
     DATA.times.back++
     Refresh()
 }
 
 CB_CHECK(*) {
-    Sleep 1000
+    Sleep 500
     WrappedClick("w")
-    Sleep 1000
+    Sleep 500
     WrappedClick("LButton")
 
     DATA.times.check++
