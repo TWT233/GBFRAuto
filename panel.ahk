@@ -11,15 +11,16 @@ class GBFRPanel {
         autokill: 0,
     }
 
-    __New(onClose) {
+    __New(game_name, on_change_name, on_close) {
         this.g := Gui("", "GBFR Auto")
         g := this.g
 
         g.SetFont("s10")
-        g.OnEvent("Close", onClose)
+        g.OnEvent("Close", on_close)
 
+        g.Add("Text","游戏名：（一般不改，PS选手用到）")
+        g.Add("Edit", , game_name).OnEvent("Change", on_change_name)
         g.Add("Text", "w200 vWINDOW_INFO")
-
         g.Add("Text", "w200 vTIMES_REPORT", "`n`r`n`r")
 
         v := this.v
