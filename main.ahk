@@ -3,10 +3,10 @@
 #Include panel.ahk
 #Include matcher.ahk
 
-; const
-C_GAME_NAME := "Granblue Fantasy: Relink"
+; configurable
+GAME_NAME := "Granblue Fantasy: Relink"
 
-C_PATH := {
+PATH := {
     CHECK: "./assets/继续挑战.png",
     BACK: "./assets/奖励确认.png",
     MISSION: "./assets/任务结算.png",
@@ -17,8 +17,8 @@ C_PATH := {
 [:: ExitApp
 
 ; components
-G := GBFRPanel(End)
-M := Matcher(C_GAME_NAME)
+G := GBFRPanel(GAME_NAME, OnGameNameChanged, OnClose)
+M := Matcher(GAME_NAME)
 
 DATA := {
     times: {
@@ -35,16 +35,16 @@ Init()
 loop {
     Sleep 500
     if G.v.check == 1 {
-        M.OnFound(C_PATH.CHECK, F_CB_CHECK)
+        M.OnFound(PATH.CHECK, F_CB_CHECK)
     }
     if G.v.back == 1 {
-        M.OnFound(C_PATH.BACK, F_CB_BACK)
+        M.OnFound(PATH.BACK, F_CB_BACK)
     }
     if G.v.mission == 1 {
-        M.OnFound(C_PATH.MISSION, F_CB_MISSION)
+        M.OnFound(PATH.MISSION, F_CB_MISSION)
     }
     if G.v.autokill == 1 {
-        M.OnFound(C_PATH.AUTOKILL, F_CB_AUTOKILL)
+        M.OnFound(PATH.AUTOKILL, F_CB_AUTOKILL)
     }
 }
 
@@ -53,18 +53,12 @@ loop {
 Init() {
     SetKeyDelay -1
 
-    InitWindowInfo()
+    RefreshWindowInfo()
 
     Refresh()
     G.Show()
 }
 
-InitWindowInfo() {
-    w := 0
-    h := 0
-    M.CheckWindow(&w, &h)
-    G.UpdateWindowInfo(w, h)
-}
 
 ;;;;;;;;;;;;;
 ; call backs on search found
@@ -93,7 +87,7 @@ F_CB_MISSION() {
     loop {
         WrappedClick("LButton")
         Sleep 200
-    } until (M.Search(C_PATH.MISSION) == 0)
+    } until (M.Search(PATH.MISSION) == 0)
 
     DATA.times.mission++
     Refresh()
@@ -105,16 +99,31 @@ F_CB_AUTOKILL() {
             WrappedClick("LButton", 4)
             Sleep 4
         }
-    } until (M.Search(C_PATH.AUTOKILL) == 0)
+    } until (M.Search(PATH.AUTOKILL) == 0)
 }
 
 ;;;;;;;;;;;;;
 ; util functions
 ;;;;;;;;;;;;;
 
+OnGameNameChanged(edit, info) {
+    GAME_NAME := edit.Value
+    M.SetName(GAME_NAME)
+    Refresh()
+}
+
 Refresh() {
     t := DATA.times
     G.UpdateTimesReport(t.mission, t.back, t.check)
+
+    RefreshWindowInfo()
+}
+
+RefreshWindowInfo() {
+    w := 0
+    h := 0
+    M.CheckWindow(&w, &h)
+    G.UpdateWindowInfo(w, h)
 }
 
 WrappedClick(key, len := 50) {
@@ -123,6 +132,6 @@ WrappedClick(key, len := 50) {
     SendEvent "{" key " up}"
 }
 
-End(_) {
+OnClose(_) {
     ExitApp
 }
