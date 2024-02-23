@@ -25,25 +25,17 @@ class GBFRPanel {
 
         v := this.v
 
-        CB_NEED_MISSION(cb, info) {
-            v.mission := cb.Value
-        }
-        g.Add("CheckBox", "vCB_NEED_MISSION Checked", "跳过任务结算").OnEvent("Click", CB_NEED_MISSION)
+        g.Add("CheckBox", "vCB_NEED_MISSION Checked", "跳过任务结算")
+            .OnEvent("Click", (cb, *) => (v.mission := cb.Value))
 
-        CB_NEED_BACK(cb, info) {
-            v.back := cb.Value
-        }
-        g.Add("CheckBox", "vCB_NEED_BACK Checked", "跳过奖励确认").OnEvent("Click", CB_NEED_BACK)
+        g.Add("CheckBox", "vCB_NEED_BACK Checked", "跳过奖励确认")
+            .OnEvent("Click", (cb, *) => (v.back := cb.Value))
 
-        CB_NEED_CHECK(cb, info) {
-            v.check := cb.Value
-        }
-        g.Add("CheckBox", "vCB_NEED_CHECK Checked", "自动继续挑战").OnEvent("Click", CB_NEED_CHECK)
+        g.Add("CheckBox", "vCB_NEED_CHECK Checked", "自动继续挑战")
+            .OnEvent("Click", (cb, *) => (v.check := cb.Value))
 
-        CB_NEED_AUTOKILL(cb, info) {
-            v.autokill := cb.Value
-        }
-        g.Add("CheckBox", "vCB_NEED_AUTOKILL", "自动连发平A（仅限史莱姆本）").OnEvent("Click", CB_NEED_AUTOKILL)
+        g.Add("CheckBox", "vCB_NEED_AUTOKILL", "自动连发平A（仅限史莱姆本）")
+            .OnEvent("Click", (cb, *) => (v.autokill := cb.Value))
     }
 
     Show() {
