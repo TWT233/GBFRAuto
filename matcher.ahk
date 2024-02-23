@@ -1,21 +1,36 @@
 #Requires AutoHotkey v2.0
 
+#Include condition.ahk
+
 class Matcher {
     name := "" ; attached window name
 
-    __New(name) {
-        this.SetName(name)
-    }
+    interval := 500
 
-    SetName(name) {
+    conds := [] ; registered conditions
+
+    __New(name, interval := 500) {
         this.name := name
+        this.interval := interval
     }
 
-    OnFound(path, callback) {
-        if this.Search(path) == 0 {
-            return
+    Add(cond) {
+        this.conds.Push(cond)
+    }
+
+    Run() {
+        loop {
+            Sleep(this.interval)
+            for cond in this.conds {
+                if cond.enabler() != 1 {
+                    continue
+                }
+                if this.Search(cond.path) == 0 {
+                    continue
+                }
+                cond.cb()
+            }
         }
-        callback()
     }
 
     Search(path) {
