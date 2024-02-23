@@ -21,7 +21,10 @@ class Matcher {
     Search(path) {
         w := 0
         h := 0
-        WinGetClientPos(, , &w, &h, this.name)
+        ret := this.CheckWindow(&w, &h)
+        if ret != 1 {
+            return 0
+        }
 
         _ := 0
         return ImageSearch(&_, &_, 0, 0, w, h, "*128 *TransBlack *w" w " *h-1 " path)
@@ -33,6 +36,8 @@ class Matcher {
             WinGetClientPos(, , &w, &h, this.name)
         }
         catch TargetError {
+            w := 0
+            h := 0
             return 0
         }
         return 1
