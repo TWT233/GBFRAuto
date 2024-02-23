@@ -18,7 +18,7 @@ class GBFRPanel {
         g.SetFont("s10")
         g.OnEvent("Close", on_close)
 
-        g.Add("Text","游戏名：（一般不改，PS选手用到）")
+        g.Add("Text", , "游戏窗口名：(一般不改 PS才用)")
         g.Add("Edit", , game_name).OnEvent("Change", on_change_name)
         g.Add("Text", "w200 vWINDOW_INFO")
         g.Add("Text", "w200 vTIMES_REPORT", "`n`r`n`r")
