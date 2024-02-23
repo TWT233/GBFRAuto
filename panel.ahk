@@ -43,7 +43,7 @@ class GBFRPanel {
         CB_NEED_AUTOKILL(cb, info) {
             v.autokill := cb.Value
         }
-        g.Add("CheckBox", "vCB_NEED_AUTOKILL", "自动连发平A（仅限史莱姆本）").OnEvent("Click", CB_NEED_AUTOKILL)
+        g.Add("CheckBox", "vCB_NEED_AUTOKILL", "自动连发平A（限史莱姆+拉卡姆）").OnEvent("Click", CB_NEED_AUTOKILL)
     }
 
     Show() {

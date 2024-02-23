@@ -65,6 +65,7 @@ Init() {
 ;;;;;;;;;;;;;
 
 F_CB_BACK() {
+    Sleep 5000 ; wait for the animation to finish
     WrappedClick("LButton", 100)
     Sleep 1000
     WrappedClick("LButton", 100)
@@ -94,6 +95,12 @@ F_CB_MISSION() {
 }
 
 F_CB_AUTOKILL() {
+    loop 30 { ; walk to some place near to the center
+        WrappedClick("LButton", 300) ; hit of "just"
+        Sleep 4
+        WrappedClick("w", 300)
+        Sleep 4
+    } until (M.Search(C_PATH.AUTOKILL) == 0)
     loop {
         loop 120 {
             WrappedClick("LButton", 4)
