@@ -6,7 +6,7 @@
 #Include panel.ahk
 
 ; always an emergency exit
-[:: ExitApp
+[:: OnClose
 
 ; auto selling
 ]:: AutoSellAndLottery(M, G)
@@ -14,6 +14,14 @@
 GAP := 200
 GUARD := (len := 500) => (Sleep(len))
 
+
+OnClose(_ := 0) {
+    EventClick("LButton")
+    EventClick("RButton")
+    EventClick("MButton")
+    EventClick("w")
+    ExitApp
+}
 
 AutoSellAndLottery(M, G) {
     dec(hot_key_name) {

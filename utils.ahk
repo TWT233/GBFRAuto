@@ -8,10 +8,6 @@ EventClick(key, len := 50, pre := 0, post := 0) {
     Sleep post
 }
 
-OnClose(_) {
-    ExitApp
-}
-
 GuardLoop(untiler, body, post) {
     while (untiler() == 0) {
         loop {
