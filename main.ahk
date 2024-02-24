@@ -10,6 +10,7 @@ GAME_NAME := "Granblue Fantasy: Relink"
 PATH := {
     CHECK: "./assets/继续挑战.png",
     BACK: "./assets/奖励确认.png",
+    BACK2: "./assets/奖励确认2.png",
     MISSION: "./assets/任务结算.png",
     AUTOKILL: "./assets/autokill.png",
 }
@@ -34,7 +35,8 @@ DATA := {
 Init()
 
 M.Add(Condition(PATH.CHECK, CB_CHECK, (*) => G.v.check))
-M.Add(Condition(PATH.BACK, CB_BACK, (*) => G.v.back))
+M.Add(Condition(PATH.BACK, CB_BACK, (*) => false))
+M.Add(Condition(PATH.BACK2, CB_BACK, (*) => G.v.back))
 M.Add(Condition(PATH.MISSION, CB_MISSION, (*) => G.v.mission))
 M.Add(Condition(PATH.AUTOKILL, CB_AUTOKILL, (*) => G.v.autokill))
 
