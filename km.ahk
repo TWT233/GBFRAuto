@@ -12,6 +12,7 @@
 ]:: AutoSellAndLottery(M, G)(0)
 
 GAP := 200
+SLOW_GAP := 1000
 GUARD := (len := 500) => (Sleep(len))
 
 
@@ -55,7 +56,7 @@ FilterToMain() {
 MainToSigil(M) {
     GUARD()
     GuardLoop(() => (M.Search(PATH.TicketWithSigil)),
-    () => (EventClick("s", , , GAP)), GUARD)
+    () => (EventClick("s", , , SLOW_GAP)), GUARD)
     GUARD()
 }
 
@@ -96,7 +97,7 @@ MainToLottery() {
 LotteryToLV3(M) {
     GUARD()
     GuardLoop(() => (M.Search(PATH.LotteryLV3)),
-    () => (EventClick("s", , , GAP)), GUARD)
+    () => (EventClick("s", , , SLOW_GAP)), GUARD)
     GUARD()
 }
 
@@ -106,7 +107,7 @@ DoLottery(M) {
         loop {
             EventClick("LButton", , , 20)
         } until (M.Search(PATH.LotteryFinish) == 1)
-        GUARD()
+        Sleep(1000)
     }
     EventClick("RButton", , , GAP)
     GUARD()
