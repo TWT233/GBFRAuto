@@ -104,13 +104,14 @@ LotteryToLV3(M) {
 DoLottery(M) {
     GUARD()
 
-    loop 400 {
+    loop 1200 {
         EventClick("LButton", 20, , 20)
     }
     GUARD()
 
-    GuardLoop(() => (M.Search(PATH.LotteryLV3)),
-    () => (EventClick("RButton", , , SLOW_GAP)), GUARD)
+    loop {
+        EventClick("RButton", , , SLOW_GAP)
+    } until (M.Search(PATH.LotteryLV3) == 1)
 
     GUARD()
 }
