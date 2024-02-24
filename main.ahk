@@ -78,11 +78,13 @@ CB_AUTOKILL(*) {
         SendEvent "{MButton Down}"
     }
 
+    SendEvent "{q Down}"
     loop {
         loop 50 {
             EventClick("LButton", 4, , 4)
         }
     } until (M.Search(PATH.AUTOKILL) == 0)
+    SendEvent "{q up}"
 
     if G.v.step_for_slime {
         SendEvent "{MButton up}"
