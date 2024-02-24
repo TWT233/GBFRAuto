@@ -1,13 +1,10 @@
-﻿#Requires AutoHotkey v2.0
+#Requires AutoHotkey v2.0
 
 #Include const.ahk
 #Include km.ahk
 #Include utils.ahk
 #Include panel.ahk
 #Include matcher.ahk
-
-; configurable
-GAME_NAME := "Granblue Fantasy: Relink"
 
 ; components
 G := GBFRPanel(OnClose)
@@ -78,7 +75,7 @@ CB_MISSION(*) {
 CB_AUTOKILL(*) {
     if G.v.step_for_slime {
         loop 3 {
-            SendEvent "{w Down}"
+        SendEvent "{w Down}"
             SendEvent "{e Down}"
             Sleep 50
             SendEvent "{e up}"

@@ -1,5 +1,7 @@
 #Requires AutoHotkey v2.0
 
+GAME_NAME := "Granblue Fantasy: Relink"
+
 PATH := {
     ; main match cond
     CHECK: "./assets/继续挑战.png",
