@@ -49,12 +49,12 @@ class GBFRPanel {
         g.Add("CheckBox", "vCB_NEED_AUTOKILL", "自动连发平A")
             .OnEvent("Click", (cb, *) => (v.autokill := cb.Value))
 
-        g.Add("CheckBox", "vCB_NEED_STEP_FOR_SLIME", "自动连发平A前先前滚五下`n（史莱姆大军特化）")
+        g.Add("CheckBox", "vCB_NEED_STEP_FOR_SLIME", "连A保持索敌前移`n（史莱姆大军特化）")
             .OnEvent("Click", (cb, *) => (v.step_for_slime := cb.Value))
 
         g.Add("Text", , " ")
 
-        g.Add("Text", , "自动卖因子轮数：(0为卖到筛选空)")
+        g.Add("Text", , "自动卖因子轮数：(0为卖光筛选)")
         g.Add("Edit")
         g.Add("UpDown", "vUD_SELL_ROUNDS Range0-10", 0)
             .OnEvent("Change", (ud, *) => (v.sell_rounds := ud.Value))
