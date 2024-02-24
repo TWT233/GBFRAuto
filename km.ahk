@@ -9,7 +9,7 @@
 [:: OnClose
 
 ; auto selling
-]:: AutoSellAndLottery(M, G)
+]:: AutoSellAndLottery(M, G)(0)
 
 GAP := 200
 GUARD := (len := 500) => (Sleep(len))
