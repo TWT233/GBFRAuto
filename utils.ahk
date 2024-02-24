@@ -11,3 +11,12 @@ EventClick(key, len := 50, pre := 0, post := 0) {
 OnClose(_) {
     ExitApp
 }
+
+GuardLoop(untiler, body, post) {
+    while (untiler() == 0) {
+        loop {
+            body()
+        } until (untiler() == 1)
+        post()
+    }
+}
