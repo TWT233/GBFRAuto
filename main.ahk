@@ -1,5 +1,7 @@
 ﻿#Requires AutoHotkey v2.0
 
+#Include const.ahk
+#Include km.ahk
 #Include utils.ahk
 #Include panel.ahk
 #Include matcher.ahk
@@ -7,19 +9,8 @@
 ; configurable
 GAME_NAME := "Granblue Fantasy: Relink"
 
-PATH := {
-    CHECK: "./assets/继续挑战.png",
-    BACK: "./assets/奖励确认.png",
-    BACK2: "./assets/奖励确认2.png",
-    MISSION: "./assets/任务结算.png",
-    AUTOKILL: "./assets/autokill.png",
-}
-
-; always an emergency exit
-[:: ExitApp
-
 ; components
-G := GBFRPanel(GAME_NAME, OnGameNameChanged, OnClose)
+G := GBFRPanel(OnClose)
 M := Matcher(GAME_NAME)
 
 DATA := {
@@ -50,6 +41,7 @@ Init() {
     RefreshWindowInfo()
 
     Refresh()
+    G.BindGameName(OnGameNameChanged, GAME_NAME)
     G.Show()
 }
 
