@@ -33,7 +33,7 @@ class Matcher {
         }
     }
 
-    Search(path) {
+    Search(path, shades := 128) {
         w := 0
         h := 0
         ret := this.CheckWindow(&w, &h)
@@ -42,7 +42,7 @@ class Matcher {
         }
 
         _ := 0
-        return ImageSearch(&_, &_, 0, 0, w, h, "*128 *TransBlack *w" w " *h-1 " path)
+        return ImageSearch(&_, &_, 0, 0, w, h, "*" shades " *TransBlack *w" w " *h-1 " path)
     }
 
     ; returns 1 if exists, otherwise 0
