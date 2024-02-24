@@ -1,4 +1,4 @@
-#Requires AutoHotkey v2.0
+﻿#Requires AutoHotkey v2.0
 
 #Include const.ahk
 #Include km.ahk
@@ -74,29 +74,20 @@ CB_MISSION(*) {
 
 CB_AUTOKILL(*) {
     if G.v.step_for_slime {
-        loop 3 {
         SendEvent "{w Down}"
-            SendEvent "{e Down}"
-            Sleep 50
-            SendEvent "{e up}"
-            SendEvent "{w up}"
-            Sleep 500
-        }
-        Sleep 1100
-        loop 2 {
-            SendEvent "{w Down}"
-            SendEvent "{e Down}"
-            Sleep 50
-            SendEvent "{e up}"
-            SendEvent "{w up}"
-            Sleep 500
-        }
+        SendEvent "{MButton Down}"
     }
+
     loop {
-        loop 120 {
+        loop 50 {
             EventClick("LButton", 4, , 4)
         }
     } until (M.Search(PATH.AUTOKILL) == 0)
+
+    if G.v.step_for_slime {
+        SendEvent "{MButton up}"
+        SendEvent "{w up}"
+    }
 }
 
 ;;;;;;;;;;;;;
