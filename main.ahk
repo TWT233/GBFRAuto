@@ -23,7 +23,7 @@ DATA := {
 Init()
 
 M.Add(Condition(PATH.CHECK, CB_CHECK, (*) => G.v.check))
-M.Add(Condition(PATH.BACK, CB_BACK, (*) => false))
+M.Add(Condition(PATH.BACK, CB_BACK, (*) => G.v.back))
 M.Add(Condition(PATH.BACK2, CB_BACK, (*) => G.v.back))
 M.Add(Condition(PATH.MISSION, CB_MISSION, (*) => G.v.mission))
 M.Add(Condition(PATH.AUTOKILL, CB_AUTOKILL, (*) => G.v.autokill))
