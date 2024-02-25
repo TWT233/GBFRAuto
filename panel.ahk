@@ -17,6 +17,7 @@ class GBFRPanel {
         autokill: 0,
         step_for_slime: 0,
         sell_rounds: 0,
+        seya: 0,
     }
 
     __New(on_close) {
@@ -51,6 +52,9 @@ class GBFRPanel {
 
         g.Add("CheckBox", "vCB_NEED_STEP_FOR_SLIME", "连A保持索敌前移`n（史莱姆大军特化）")
             .OnEvent("Click", (cb, *) => (v.step_for_slime := cb.Value))
+
+        g.Add("CheckBox", "vCB_NEED_STEP_FOR_SEYA", "Lancelot_SEYA!")
+            .OnEvent("Click", (cb, *) => (v.seya := cb.Value))
 
         g.Add("Text", , " ")
 

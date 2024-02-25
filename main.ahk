@@ -27,6 +27,7 @@ M.Add(Condition(PATH.BACK, CB_BACK, (*) => G.v.back))
 M.Add(Condition(PATH.BACK2, CB_BACK, (*) => G.v.back))
 M.Add(Condition(PATH.MISSION, CB_MISSION, (*) => G.v.mission))
 M.Add(Condition(PATH.AUTOKILL, CB_AUTOKILL, (*) => G.v.autokill))
+M.Add(Condition(PATH.AUTOKILL, CB_SEYA, (*) => G.v.seya))
 
 M.Run()
 
@@ -73,23 +74,44 @@ CB_MISSION(*) {
 }
 
 CB_AUTOKILL(*) {
-    if G.v.step_for_slime {
+    if G.v.seya {
         SendEvent "{w Down}"
+        SendEvent "{q Down}"
         SendEvent "{MButton Down}"
-    }
 
-    SendEvent "{q Down}"
-    loop {
-        loop 50 {
-            EventClick("LButton", 4, , 4)
-        }
-    } until (M.Search(PATH.AUTOKILL) == 0)
-    SendEvent "{q up}"
+        loop {
+            loop 50 {
+                EventClick("RButton", 4, , 4)
+            }
+        } until (M.Search(PATH.AUTOKILL) == 0)
 
-    if G.v.step_for_slime {
         SendEvent "{MButton up}"
+        SendEvent "{q up}"
         SendEvent "{w up}"
+    } 
+    else {
+        if G.v.step_for_slime {
+            SendEvent "{w Down}"
+            SendEvent "{MButton Down}"
+        }
+
+        SendEvent "{q Down}"
+        loop {
+            loop 50 {
+                EventClick("LButton", 4, , 4)
+            }
+        } until (M.Search(PATH.AUTOKILL) == 0)
+        SendEvent "{q up}"
+
+        if G.v.step_for_slime {
+            SendEvent "{MButton up}"
+            SendEvent "{w up}"
+        }
     }
+}
+
+CB_SEYA(*) {
+        
 }
 
 ;;;;;;;;;;;;;
