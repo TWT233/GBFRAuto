@@ -81,7 +81,11 @@ CB_AUTOKILL(*) {
 
         loop {
             loop 50 {
-                EventClick("RButton", 4, , 4)
+                EventClick("g", 4, , )
+                EventClick("r", 4, , )
+                EventClick("RButton", 4, , )
+                EventClick("r", 4, , )
+                EventClick("g", 4, , )
             }
         } until (M.Search(PATH.AUTOKILL) == 0)
 
