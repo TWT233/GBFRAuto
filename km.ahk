@@ -109,9 +109,9 @@ DoLottery(M) {
     }
     GUARD()
 
-    loop {
+    while (!M.Search(PATH.LotteryLV3)) {
         EventClick("RButton", , , SLOW_GAP)
-    } until (M.Search(PATH.LotteryLV3) == 1)
+    }
 
     GUARD()
 }
