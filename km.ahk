@@ -6,7 +6,7 @@
 #Include panel.ahk
 
 ; always an emergency exit
-[:: OnClose
+[:: Reload
 
 ; auto selling
 ]:: AutoSellAndLottery(M, G)(0)
