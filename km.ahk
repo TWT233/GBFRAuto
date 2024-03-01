@@ -6,8 +6,8 @@
 #Include panel.ahk
 
 ; always an emergency exit
-[:: Reload
-\:: ExitApp
+[:: ExitApp
+\:: Reload
 
 ; auto selling
 ]:: AutoSellAndLottery(M, G)(0)
