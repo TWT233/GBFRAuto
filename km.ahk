@@ -7,6 +7,7 @@
 
 ; always an emergency exit
 [:: Reload
+\:: ExitApp
 
 ; auto selling
 ]:: AutoSellAndLottery(M, G)(0)
