@@ -16,3 +16,19 @@ GuardLoop(untiler, body, post) {
         post()
     }
 }
+
+OnClose(*) {
+    SendEvent("{1 up}")
+    SendEvent("{2 up}")
+    SendEvent("{3 up}")
+    SendEvent("{4 up}")
+    SendEvent("{w up}")
+    SendEvent("{s up}")
+    SendEvent("{q up}")
+    SendEvent("{r up}")
+    SendEvent("{g up}")
+    SendEvent("{MButton up}")
+    SendEvent("{RButton up}")
+    SendEvent("{LButton up}")
+    ExitApp
+}
