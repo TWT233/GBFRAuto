@@ -2,34 +2,24 @@
 
 #Include const.ahk
 #Include utils.ahk
-#Include matcher.ahk
-#Include panel.ahk
+#Include components.ahk
 
 ; always an emergency exit
-[:: ExitApp
+[:: OnClose()
 \:: Reload
 
 ; auto selling
-]:: AutoSellAndLottery(M, G)(0)
+]:: AutoSellAndLottery(M, NG)(0)
 
 GAP := 200
 SLOW_GAP := 1000
 GUARD := (len := 500) => (Sleep(len))
 
-
-OnClose(_ := 0) {
-    EventClick("LButton")
-    EventClick("RButton")
-    EventClick("MButton")
-    EventClick("w")
-    ExitApp
-}
-
-AutoSellAndLottery(M, G) {
+AutoSellAndLottery(M, NG) {
     dec(hot_key_name) {
         FilterToMain()
         i := 0
-        while (G.v.sell_rounds == 0 || i < G.v.sell_rounds)
+        while (NG.sell.rounds == 0 || i < NG.sell.rounds)
         {
             MainToSigil(M)
             ret := SellSigils()
