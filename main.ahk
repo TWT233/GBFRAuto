@@ -73,6 +73,40 @@ CB_MISSION(*) {
 }
 
 CB_AUTOKILL(*) {
+    if G.v.seya {
+        AUTOKILL_SEYA()
+    } 
+    else {
+        AUTOKILL_SLIME()
+    }
+}
+
+AUTOKILL_SEYA(*) {
+    SendEvent "{w Down}"
+    SendEvent "{q Down}"
+    SendEvent "{MButton Down}"
+
+    loop {
+        loop 50 {
+            EventClick("g", 4, , )
+            EventClick("r", 4, , )
+            EventClick("RButton", 4, , )
+            EventClick("MButton", 4, , )
+            if G.v.skills {
+                EventClick("1", 4, , )
+                EventClick("2", 4, , )
+                EventClick("3", 4, , )
+                EventClick("4", 4, , )
+            }
+        }
+    } until (M.Search(PATH.AUTOKILL) == 0)
+
+    SendEvent "{MButton up}"
+    SendEvent "{q up}"
+    SendEvent "{w up}"
+}
+
+AUTOKILL_SLIME(*) {
     if G.v.step_for_slime {
         SendEvent "{w Down}"
         SendEvent "{MButton Down}"
@@ -82,6 +116,12 @@ CB_AUTOKILL(*) {
     loop {
         loop 50 {
             EventClick("LButton", 4, , 4)
+            if G.v.skills {
+                EventClick("1", 4, , )
+                EventClick("2", 4, , )
+                EventClick("3", 4, , )
+                EventClick("4", 4, , )
+            }
         }
     } until (M.Search(PATH.AUTOKILL) == 0)
     SendEvent "{q up}"
