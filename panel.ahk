@@ -18,6 +18,7 @@ class GBFRPanel {
         step_for_slime: 0,
         sell_rounds: 0,
         seya: 0,
+        skills: 0,
     }
 
     __New(on_close) {
@@ -55,6 +56,9 @@ class GBFRPanel {
 
         g.Add("CheckBox", "vCB_NEED_STEP_FOR_SEYA", "Lancelot_SEYA!")
             .OnEvent("Click", (cb, *) => (v.seya := cb.Value))
+
+        g.Add("CheckBox", "vCB_NEED_STEP_FOR_skills", "自动连发平A_With_Skills")
+            .OnEvent("Click", (cb, *) => (v.skills := cb.Value))            
 
         g.Add("Text", , " ")
 
