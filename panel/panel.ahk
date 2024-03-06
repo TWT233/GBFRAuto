@@ -4,6 +4,7 @@
 #Include skip.ahk
 #Include autokill.ahk
 #Include sell.ahk
+#Include hotkey.ahk
 
 class Panel {
 
@@ -13,6 +14,7 @@ class Panel {
     skip := PanelSkip()
     autokill := PanelAutoKill()
     sell := PanelSell()
+    hotkey := PanelHotkey()
 
     bar := unset
 
@@ -21,7 +23,8 @@ class Panel {
         this.window.Attach(this.root, 10, 9, game_name)
         this.skip.Attach(this.root, 10, 90)
         this.autokill.Attach(this.root, 140, 90)
-        this.sell.Attach(this.root,10, 180)
+        this.sell.Attach(this.root, 10, 180)
+        this.hotkey.Attach(this.root, 270, 9)
 
         this.bar := this.root.Add("StatusBar", , "继续挑战 0 | 奖励确认 0 | 任务结算 0")
     }
@@ -46,7 +49,7 @@ class Panel {
         this.UpdateBar("继续挑战 " check " | 奖励确认 " back " | 任务结算 " mission)
     }
 
-    UpdateBar(info){
+    UpdateBar(info) {
         this.bar.SetText(info)
     }
 }
