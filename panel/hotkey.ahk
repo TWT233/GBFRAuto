@@ -2,23 +2,67 @@
 
 
 class PanelHotkey {
-    g := {
-        reset: unset,
-        exit: unset,
-        sell: unset,
+    reset := {
+        g: unset,
+        cb: unset,
+        current: unset,
+    }
+
+    exit := {
+        g: unset,
+        cb: unset,
+        current: unset,
+    }
+
+    sell := {
+        g: unset,
+        cb: unset,
+        current: unset,
     }
 
     Attach(g, x, y) {
         g.Add("GroupBox", "Section w120 h120 x" x " y" y, "键位编辑")
 
-        this.g.reset := g.Add("Hotkey", "xs9 ys25 w40")
+        this.reset.g := g.Add("Hotkey", "xs9 ys25 w40")
         g.Add("Text", "xs55 ys30", "重置脚本")
 
-        this.g.exit := g.Add("Hotkey", "xs9 ys55 w40")
+        this.exit.g := g.Add("Hotkey", "xs9 ys55 w40")
         g.Add("Text", "xs55 ys60", "强退脚本")
 
-        this.g.sell := g.Add("Hotkey", "xs9 ys85 w40")
+        this.sell.g := g.Add("Hotkey", "xs9 ys85 w40")
         g.Add("Text", "xs55 ys90", "卖因子")
-
     }
+
+    BindReset(cb, initial) {
+        this._RawBind(this.reset, cb, initial)
+    }
+
+    BindExit(cb, initial) {
+        this._RawBind(this.exit, cb, initial)
+    }
+
+    BindSell(cb, initial) {
+        this._RawBind(this.sell, cb, initial)
+    }
+
+    _RawBind(i, cb, initial) {
+        i.cb := cb
+        i.current := initial
+        i.g.Value := initial
+        Hotkey(i.current, i.cb)
+
+        wrappedCB(ctrl, *) {
+            try {
+                Hotkey(ctrl.Value, i.cb)
+            } catch Error {
+                ctrl.Value := i.current
+                return
+            }
+            Hotkey(i.current, "Off")
+            i.current := ctrl.Value
+        }
+
+        i.g.OnEvent("Change", wrappedCB)
+    }
+
 }
