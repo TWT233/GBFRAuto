@@ -1,4 +1,4 @@
-﻿#Requires AutoHotkey v2.0
+#Requires AutoHotkey v2.0
 
 #Include utils.ahk
 #Include km.ahk
@@ -22,6 +22,10 @@ Init() {
     SetKeyDelay -1
 
     Refresh()
+
+    NG.hotkey.BindReset(OnReset, "]")
+    NG.hotkey.BindExit(OnClose, "[")
+    NG.hotkey.BindSell(AutoSellAndLottery, "\")
 
     NG.OnClose(OnClose)
     NG.OnGameNameChange((edit, *) => (
