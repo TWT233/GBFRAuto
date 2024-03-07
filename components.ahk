@@ -1,7 +1,7 @@
 #Requires AutoHotkey v2.0
 
 #Include matcher.ahk
-#Include panel/panel.ahk
+#Include gui/panel.ahk
 
 ; const
 
