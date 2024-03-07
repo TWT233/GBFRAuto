@@ -1,8 +1,7 @@
-#Requires AutoHotkey v2.0
+﻿#Requires AutoHotkey v2.0
 
 #Include utils.ahk
 #Include km.ahk
-#Include condition.ahk
 #Include components.ahk
 
 ; main
