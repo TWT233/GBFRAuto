@@ -1,6 +1,5 @@
 #Requires AutoHotkey v2.0
 
-#Include const.ahk
 #Include utils.ahk
 #Include components.ahk
 
