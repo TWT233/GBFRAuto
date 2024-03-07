@@ -17,7 +17,7 @@ GuardLoop(untiler, body, post) {
     }
 }
 
-OnClose(*) {
+Cleanup() {
     SendEvent("{1 up}")
     SendEvent("{2 up}")
     SendEvent("{3 up}")
@@ -30,5 +30,14 @@ OnClose(*) {
     SendEvent("{MButton up}")
     SendEvent("{RButton up}")
     SendEvent("{LButton up}")
+}
+
+OnReset(*) {
+    Cleanup()
+    Reload
+}
+
+OnClose(*) {
+    Cleanup()
     ExitApp
 }
