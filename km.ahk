@@ -4,37 +4,27 @@
 #Include utils.ahk
 #Include components.ahk
 
-; always an emergency exit
-[:: OnClose()
-\:: Reload
-
-; auto selling
-]:: AutoSellAndLottery(M, NG)(0)
-
 GAP := 200
 SLOW_GAP := 1000
 GUARD := (len := 500) => (Sleep(len))
 
-AutoSellAndLottery(M, NG) {
-    dec(hot_key_name) {
-        FilterToMain()
-        i := 0
-        while (NG.sell.rounds == 0 || i < NG.sell.rounds)
-        {
-            MainToSigil(M)
-            ret := SellSigils()
-            if ret == 1 {
-                return
-            }
-            SellToMain()
-            MainToLottery()
-            LotteryToLV3(M)
-            DoLottery(M)
-            LotteryToMain()
-            i++
+AutoSellAndLottery(*) {
+    FilterToMain()
+    i := 0
+    while (NG.sell.rounds == 0 || i < NG.sell.rounds)
+    {
+        MainToSigil(M)
+        ret := SellSigils()
+        if ret == 1 {
+            return
         }
+        SellToMain()
+        MainToLottery()
+        LotteryToLV3(M)
+        DoLottery(M)
+        LotteryToMain()
+        i++
     }
-    return dec
 }
 
 FilterToMain() {
