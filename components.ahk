@@ -18,7 +18,7 @@ PATH := {
     LotteryLV3: "./assets/LotteryLV3.png",
     LotteryFinish: "./assets/LotteryFinish.png",
     TicketWithSigil: "./assets/TicketWithSigil.png",
-    HasAvailableSigil: "./assets/HasAvailableSigil.png"
+    NoAvailableSigil: "./assets/NoAvailableSigil.png"
 }
 
 ; dynamic global vars

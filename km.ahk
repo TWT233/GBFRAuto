@@ -8,20 +8,20 @@ SLOW_GAP := 1000
 GUARD := (len := 500) => (Sleep(len))
 
 AutoSellAndLottery(*) {
-    FilterToMain() ; r r
+    FilterToMain()
     i := 0
     while (NG.sell.rounds == 0 || i < NG.sell.rounds)
     {
-        MainToSigil(M) ; sellsigil(s)
-        ret := SellSigils() ; l tab 3 w l l s l l
+        MainToSigil(M)
+        ret := SellSigils()
         if ret == 1 {
             return
         }
-        SellToMain() ; r
-        MainToLottery() ; r s l
-        LotteryToLV3(M) ; lv3(s)
-        DoLottery(M) ; 1200(l) lv3(r)
-        LotteryToMain() ; r w l
+        SellToMain()
+        MainToLottery()
+        LotteryToLV3(M)
+        DoLottery(M)
+        LotteryToMain()
         i++
     }
 }
@@ -44,8 +44,8 @@ SellSigils() {
     GUARD()
     EventClick("LButton", , , GAP)
     EventClick("Tab", , , GAP)
-    ret := M.Search(PATH.HasAvailableSigil, 32)
-    if ret != true {
+    ret := M.Search(PATH.NoAvailableSigil, 32)
+    if ret == 1 {
         return 1
     }
     EventClick("3", , , GAP)
