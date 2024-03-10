@@ -1,25 +1,23 @@
 #Requires AutoHotkey v2.0
 
-#Include matcher.ahk
+#Include matcher/matcher.ahk
 #Include gui/panel.ahk
 
 ; const
 
 GAME_NAME := "Granblue Fantasy: Relink"
 
-PATH := {
+CONS := {
     ; main match cond
-    CHECK: "./assets/CHECK.png",
-    BACK: "./assets/BACK.png",
-    BACK2: "./assets/BACK2.png",
-    MISSION: "./assets/MISSION.png",
-    AUTOKILL: "./assets/autokill.png",
-    AUTOKILL2: "./assets/autokill2.png",
+    CHECK: Cond().Imgs(, "./assets/CHECK.png"),
+    BACK: Cond().Imgs(, "./assets/BACK.png", "./assets/BACK2.png"),
+    MISSION: Cond().Imgs(, "./assets/MISSION.png"),
+    AUTOKILL: Cond().Imgs(, "./assets/autokill.png", "./assets/autokill2.png"),
     ; misc
-    LotteryLV3: "./assets/LotteryLV3.png",
-    LotteryFinish: "./assets/LotteryFinish.png",
-    TicketWithSigil: "./assets/TicketWithSigil.png",
-    NoAvailableSigil: "./assets/NoAvailableSigil.png"
+    LotteryLV3: Cond().Imgs(, "./assets/LotteryLV3.png"),
+    LotteryFinish: Cond().Imgs(, "./assets/LotteryFinish.png"),
+    TicketWithSigil: Cond().Imgs(, "./assets/TicketWithSigil.png"),
+    NoAvailableSigil: Cond().Imgs(, "./assets/NoAvailableSigil.png"),
 }
 
 ; dynamic global vars
