@@ -7,11 +7,10 @@
 ; main
 Init()
 
-M.Add(Condition(PATH.CHECK, CB_CHECK, (*) => NG.skip.check))
-M.Add(Condition(PATH.BACK, CB_BACK, (*) => NG.skip.back))
-M.Add(Condition(PATH.BACK2, CB_BACK, (*) => NG.skip.back))
-M.Add(Condition(PATH.MISSION, CB_MISSION, (*) => NG.skip.mission))
-M.Add(Condition([PATH.AUTOKILL, PATH.AUTOKILL2], CB_AUTOKILL, (*) => NG.autokill.all))
+M.Register(CONS.CHECK, CB_CHECK, (*) => NG.skip.check)
+M.Register(CONS.BACK, CB_BACK, (*) => NG.skip.back)
+M.Register(CONS.MISSION, CB_MISSION, (*) => NG.skip.mission)
+M.Register(CONS.AUTOKILL, CB_AUTOKILL, (*) => NG.autokill.all)
 
 M.Run()
 
@@ -55,7 +54,7 @@ CB_CHECK(*) {
 CB_MISSION(*) {
     loop {
         EventClick("LButton", , , 200)
-    } until (M.Search(PATH.MISSION) == 0)
+    } until (M.Match(CONS.MISSION) == 0)
 
     DATA.times.mission++
     Refresh()
@@ -84,7 +83,7 @@ CB_AUTOKILL(*) {
         if v.r_and_g {
             AUTOKILL_R_AND_G()
         }
-    } until (M.Search([PATH.AUTOKILL, PATH.AUTOKILL2]) == 0)
+    } until (M.Match(CONS.AUTOKILL) == 0)
     AUTOKILL_LEAVE()
 }
 
@@ -136,6 +135,6 @@ Refresh() {
 
     w := 0
     h := 0
-    M.CheckWindow(&w, &h)
+    M.GetGameWindow(&w, &h)
     NG.UpdateWindowInfo(w, h)
 }
