@@ -1,14 +1,17 @@
 #Requires AutoHotkey v2.0
 
 class Condition {
-    path := "" ; path to trigger image
+    paths := [] ; path to trigger image
 
     cb := 0 ; callback on match
 
     enabler := 0 ; dynamic check if this condition is enabled
 
-    __New(path, cb, enabler) {
-        this.path := path
+    __New(paths, cb, enabler) {
+        if Type(paths) != "Array" {
+            paths := [paths]
+        }
+        this.paths := paths
         this.cb := cb
         this.enabler := enabler
     }
@@ -37,7 +40,7 @@ class Matcher {
                 if cond.enabler() != 1 {
                     continue
                 }
-                if this.Search(cond.path) == 0 {
+                if this.Search(cond.paths) == 0 {
                     continue
                 }
                 cond.cb()
@@ -45,7 +48,7 @@ class Matcher {
         }
     }
 
-    Search(path, shades := 128) {
+    Search(paths, shades := 128) {
         w := 0
         h := 0
         ret := this.CheckWindow(&w, &h)
@@ -54,7 +57,15 @@ class Matcher {
         }
 
         _ := 0
-        return ImageSearch(&_, &_, 0, 0, w, h, "*" shades " *TransBlack *w" w " *h-1 " path)
+        ps := paths
+        if Type(paths) != "Array" {
+            ps := [paths]
+        }
+        result := true
+        for p in ps {
+            result &= ImageSearch(&_, &_, 0, 0, w, h, "*" shades " *TransBlack *w" w " *h-1 " p)
+        }
+        return result
     }
 
     ; returns 1 if exists, otherwise 0

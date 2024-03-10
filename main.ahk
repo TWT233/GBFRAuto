@@ -11,7 +11,7 @@ M.Add(Condition(PATH.CHECK, CB_CHECK, (*) => NG.skip.check))
 M.Add(Condition(PATH.BACK, CB_BACK, (*) => NG.skip.back))
 M.Add(Condition(PATH.BACK2, CB_BACK, (*) => NG.skip.back))
 M.Add(Condition(PATH.MISSION, CB_MISSION, (*) => NG.skip.mission))
-M.Add(Condition(PATH.AUTOKILL, CB_AUTOKILL, (*) => NG.autokill.all))
+M.Add(Condition([PATH.AUTOKILL, PATH.AUTOKILL2], CB_AUTOKILL, (*) => NG.autokill.all))
 
 M.Run()
 
@@ -84,7 +84,7 @@ CB_AUTOKILL(*) {
         if v.r_and_g {
             AUTOKILL_R_AND_G()
         }
-    } until (M.Search(PATH.AUTOKILL) == 0)
+    } until (M.Search([PATH.AUTOKILL, PATH.AUTOKILL2]) == 0)
     AUTOKILL_LEAVE()
 }
 

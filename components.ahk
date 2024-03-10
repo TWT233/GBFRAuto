@@ -14,6 +14,7 @@ PATH := {
     BACK2: "./assets/BACK2.png",
     MISSION: "./assets/MISSION.png",
     AUTOKILL: "./assets/autokill.png",
+    AUTOKILL2: "./assets/autokill2.png",
     ; misc
     LotteryLV3: "./assets/LotteryLV3.png",
     LotteryFinish: "./assets/LotteryFinish.png",
