@@ -61,11 +61,12 @@ class Matcher {
         if Type(paths) != "Array" {
             ps := [paths]
         }
-        result := true
         for p in ps {
-            result &= ImageSearch(&_, &_, 0, 0, w, h, "*" shades " *TransBlack *w" w " *h-1 " p)
+            if ImageSearch(&_, &_, 0, 0, w, h, "*" shades " *TransBlack *w" w " *h-1 " p) == true {
+                return true
+            }
         }
-        return result
+        return false
     }
 
     ; returns 1 if exists, otherwise 0
