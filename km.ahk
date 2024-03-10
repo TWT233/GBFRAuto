@@ -35,7 +35,7 @@ FilterToMain() {
 
 MainToSigil(M) {
     GUARD()
-    GuardLoop(() => (M.Search(PATH.TicketWithSigil)),
+    GuardLoop(() => (M.Match(CONS.TicketWithSigil)),
     () => (EventClick("s", , , SLOW_GAP)), GUARD)
     GUARD()
 }
@@ -44,7 +44,7 @@ SellSigils() {
     GUARD()
     EventClick("LButton", , , GAP)
     EventClick("Tab", , , GAP)
-    ret := M.Search(PATH.NoAvailableSigil, 32)
+    ret := M.Match(CONS.NoAvailableSigil)
     if ret == 1 {
         return 1
     }
@@ -76,7 +76,7 @@ MainToLottery() {
 
 LotteryToLV3(M) {
     GUARD()
-    GuardLoop(() => (M.Search(PATH.LotteryLV3)),
+    GuardLoop(() => (M.Match(CONS.LotteryLV3)),
     () => (EventClick("s", , , SLOW_GAP)), GUARD)
     GUARD()
 }
@@ -89,7 +89,7 @@ DoLottery(M) {
     }
     GUARD()
 
-    while (!M.Search(PATH.LotteryLV3)) {
+    while (!M.Match(CONS.LotteryLV3)) {
         EventClick("RButton", , , SLOW_GAP)
     }
 
