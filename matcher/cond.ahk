@@ -38,7 +38,6 @@ class Cond {
             for p in pixels {
                 val := HexToColor(PixelGetColor(p.x * h // p.h, p.y * h // p.h))
                 if !p.MatchWithShades(val, shades) {
-                    NG.UpdateBar("miss " p.ToString() " " val.ToString())
                     return false
                 }
             }
