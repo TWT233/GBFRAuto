@@ -23,7 +23,8 @@ Init() {
 
     NG.hotkey.BindReset(OnReset, "]")
     NG.hotkey.BindExit(OnClose, "[")
-    NG.hotkey.BindSell(AutoSellAndLottery, "\")
+    NG.hotkey.BindSellSigils(SellSigilsAndLottery, "\")
+    NG.hotkey.BindSellCharms(SellCharmAndLottery, "=")
 
     NG.OnClose(OnClose)
     NG.OnGameNameChange((edit, *) => (

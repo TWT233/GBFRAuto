@@ -7,22 +7,57 @@ GAP := 200
 SLOW_GAP := 1000
 GUARD := (len := 500) => (Sleep(len))
 
-AutoSellAndLottery(*) {
+SellCharmAndLottery(*) {
     FilterToMain()
     i := 0
     while (NG.sell.rounds == 0 || i < NG.sell.rounds)
     {
-        MainToSigil(M)
-        ret := SellSigils()
-        if ret == 1 {
-            return
-        }
-        MainToLottery()
+        MainToSell()
+        SellCharms()
+        SellToLottery()
         LotteryToLV3(M)
         DoLottery(M)
         LotteryToMain()
         i++
     }
+}
+
+SellCharms() {
+    loop 30 {
+        EventClick("LButton", , , GAP)
+        EventClick("s", , , GAP)
+    }
+    Sell()
+    GUARD()
+}
+
+SellSigilsAndLottery(*) {
+    FilterToMain()
+    i := 0
+    while (NG.sell.rounds == 0 || i < NG.sell.rounds)
+    {
+        MainToSell()
+        ret := SellSigils()
+        if ret == 1 {
+            return
+        }
+        SellToLottery()
+        LotteryToLV3(M)
+        DoLottery(M)
+        LotteryToMain()
+        i++
+    }
+}
+
+SellSigils() {
+    EventClick("Tab", , , GAP)
+    ret := M.Match(CONS.NoAvailableSigil)
+    if ret == 1 {
+        return 1
+    }
+    Sell()
+    GUARD()
+    return 0
 }
 
 FilterToMain() {
@@ -31,19 +66,11 @@ FilterToMain() {
     GUARD()
 }
 
-MainToSigil(M) {
-    GuardLoop(() => (M.Match(CONS.TicketWithSigil)),
-    () => (EventClick("s", , , SLOW_GAP)), GUARD)
-    GUARD()
+MainToSell() {
+    EventClick("LButton", , , GAP)
 }
 
-SellSigils() {
-    EventClick("LButton", , , GAP)
-    EventClick("Tab", , , GAP)
-    ret := M.Match(CONS.NoAvailableSigil)
-    if ret == 1 {
-        return 1
-    }
+Sell() {
     EventClick("3", , , GAP)
     EventClick("w", , , GAP)
     EventClick("LButton", , , GAP)
@@ -51,13 +78,10 @@ SellSigils() {
     EventClick("s", , , GAP)
     EventClick("LButton", , , GAP)
     EventClick("LButton", , , GAP)
-    GUARD()
-    return 0
 }
 
-MainToLottery() {
-    EventClick("RButton", , , GAP)
-    GUARD()
+SellToLottery() {
+    EventClick("RButton", , , SLOW_GAP)
     EventClick("RButton", , , GAP)
     GUARD(1000) ; slow main menu
     EventClick("s", , , GAP)
