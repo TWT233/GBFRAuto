@@ -1,7 +1,7 @@
 ﻿#Requires AutoHotkey v2.0
 
 #Include utils.ahk
-#Include km.ahk
+#Include macro.ahk
 #Include components.ahk
 
 ; main
