@@ -27,21 +27,18 @@ AutoSellAndLottery(*) {
 }
 
 FilterToMain() {
-    GUARD()
     EventClick("RButton", , , GAP)
     EventClick("RButton", , , GAP)
     GUARD()
 }
 
 MainToSigil(M) {
-    GUARD()
     GuardLoop(() => (M.Match(CONS.TicketWithSigil)),
     () => (EventClick("s", , , SLOW_GAP)), GUARD)
     GUARD()
 }
 
 SellSigils() {
-    GUARD()
     EventClick("LButton", , , GAP)
     EventClick("Tab", , , GAP)
     ret := M.Match(CONS.NoAvailableSigil)
@@ -60,13 +57,11 @@ SellSigils() {
 }
 
 SellToMain() {
-    GUARD()
     EventClick("RButton", , , GAP)
     GUARD()
 }
 
 MainToLottery() {
-    GUARD()
     EventClick("RButton", , , GAP)
     GUARD(1000) ; slow main menu
     EventClick("s", , , GAP)
@@ -75,31 +70,22 @@ MainToLottery() {
 }
 
 LotteryToLV3(M) {
-    GUARD()
     GuardLoop(() => (M.Match(CONS.LotteryLV3)),
     () => (EventClick("s", , , SLOW_GAP)), GUARD)
     GUARD()
 }
 
 DoLottery(M) {
-    GUARD()
-
-    loop 1200 {
+    loop 40 {
         EventClick("LButton", 20, , 20)
     }
-    GUARD()
-
-    while (!M.Match(CONS.LotteryLV3)) {
-        EventClick("RButton", , , SLOW_GAP)
-    }
-
     GUARD()
 }
 
 LotteryToMain() {
-    GUARD()
-    EventClick("RButton", , , GAP)
-    GUARD(1000) ; slow main menu
+    while (!M.Match(CONS.SieroTop)) {
+        EventClick("RButton", , , SLOW_GAP)
+    }
     EventClick("w", , , GAP)
     EventClick("LButton", , , GAP)
     GUARD()
