@@ -2,6 +2,7 @@
 
 #Include matcher/matcher.ahk
 #Include gui/panel.ahk
+#Include utils.ahk
 
 ; const
 
