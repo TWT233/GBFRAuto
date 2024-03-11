@@ -1,5 +1,7 @@
 #Requires AutoHotkey v2.0
 
+#Include matcher/pixel.ahk
+
 EventClick(key, len := 50, pre := 0, post := 0) {
     Sleep pre
     SendEvent "{" key " Down}"
@@ -40,4 +42,8 @@ OnReset(*) {
 OnClose(*) {
     Cleanup()
     ExitApp
+}
+
+WhitePixel2K(x, y) {
+    return Pixel(Color(0xFF, 0xFF, 0xFF), x, y, 1440)
 }
