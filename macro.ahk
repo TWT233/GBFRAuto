@@ -17,7 +17,6 @@ AutoSellAndLottery(*) {
         if ret == 1 {
             return
         }
-        SellToMain()
         MainToLottery()
         LotteryToLV3(M)
         DoLottery(M)
@@ -56,12 +55,9 @@ SellSigils() {
     return 0
 }
 
-SellToMain() {
+MainToLottery() {
     EventClick("RButton", , , GAP)
     GUARD()
-}
-
-MainToLottery() {
     EventClick("RButton", , , GAP)
     GUARD(1000) ; slow main menu
     EventClick("s", , , GAP)
@@ -76,7 +72,7 @@ LotteryToLV3(M) {
 }
 
 DoLottery(M) {
-    loop 40 {
+    loop 1200 {
         EventClick("LButton", 20, , 20)
     }
     GUARD()
