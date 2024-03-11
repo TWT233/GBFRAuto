@@ -5,7 +5,6 @@
 
 class Matcher {
     name := "" ; attached window name
-    is_current_game := false
 
     interval := 500
 
@@ -27,9 +26,8 @@ class Matcher {
     Run() {
         loop {
             Sleep(this.interval)
-            
-            this.is_current_game := this.IsCurrentGameWindow()
-            if (!this.is_current_game) {
+
+            if (!this.IsCurrentGameWindow()) {
                 continue
             }
 
@@ -63,7 +61,7 @@ class Matcher {
     }
 
     IsCurrentGameWindow() {
-        return WinGetTitle() == this.name
+        return !!WinActive(this.name)
     }
 
 }

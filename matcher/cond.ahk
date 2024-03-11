@@ -3,7 +3,6 @@
 #Include pixel.ahk
 
 class Cond {
-
     matcher := unset
 
     Imgs(shades := 128, paths*) {
@@ -27,7 +26,7 @@ class Cond {
         return this
     }
 
-    Pixels(pixels*) {
+    Pixels(shades := 2, pixels*) {
         matcher(this, M) {
             w := 0
             h := 0
@@ -37,13 +36,15 @@ class Cond {
             }
 
             for p in pixels {
-                ratio := h // p.h
-                if p.val != PixelGetColor(p.x * ratio, p.y * ratio) {
+                val := HexToColor(PixelGetColor(p.x * h // p.h, p.y * h // p.h))
+                if !p.MatchWithShades(val, shades) {
+                    NG.UpdateBar("miss " p.ToString() " " val.ToString())
                     return false
                 }
             }
             return true
         }
+        this.matcher := matcher
         return this
     }
 }
