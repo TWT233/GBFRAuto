@@ -20,7 +20,7 @@ CONS := {
         WhitePixel2K(510, 1060),
     ),
     ; misc
-    LotteryLV3: Cond().Imgs(64, "./assets/LotteryLV3.png"),
+    LotteryLV3: Cond().Imgs(, "./assets/LotteryLV3.png"),
     LotteryFinish: Cond().Imgs(, "./assets/LotteryFinish.png"),
     TicketWithSigil: Cond().Imgs(, "./assets/TicketWithSigil.png"),
     NoAvailableSigil: Cond().Imgs(32, "./assets/NoAvailableSigil.png"),
