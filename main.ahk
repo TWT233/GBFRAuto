@@ -67,23 +67,17 @@ CB_AUTOKILL(*) {
     AUTOKILL_ENTER()
     loop {
         if v.aaa {
-            loop 50 {
-                EventClick("LButton", 4, , 4)
+            loop 20 {
+                EventClick("LButton", 15, , 15)
             }
         } else if v.seya {
-            loop 40 {
-                EventClick("RButton", 4, , 4)
+            loop 20 {
+                EventClick("RButton", 15, , 15)
             }
         } else {
             Sleep(500)
         }
-
-        if v.skills {
-            AUTOKILL_SKILLS()
-        }
-        if v.r_and_g {
-            AUTOKILL_R_AND_G()
-        }
+        AUTOKILL_ROUTINED(v)
     } until (M.Match(CONS.AUTOKILL) == 0)
     AUTOKILL_LEAVE()
 }
@@ -116,16 +110,25 @@ AUTOKILL_LEAVE() {
     }
 }
 
+AUTOKILL_ROUTINED(v) {
+    if v.skills {
+        AUTOKILL_SKILLS()
+    }
+    if v.r_and_g {
+        AUTOKILL_R_AND_G()
+    }
+}
+
 AUTOKILL_SKILLS() {
-    EventClick("1", 4, , 4)
-    EventClick("2", 4, , 4)
-    EventClick("3", 4, , 4)
-    EventClick("4", 4, , 4)
+    EventClick("1", 20, , 20)
+    EventClick("2", 20, , 20)
+    EventClick("3", 20, , 20)
+    EventClick("4", 20, , 20)
 }
 
 AUTOKILL_R_AND_G() {
-    EventClick("r", 4, , 4)
-    EventClick("g", 4, , 4)
+    EventClick("r", 20, , 20)
+    EventClick("g", 20, , 20)
 }
 
 ; util functions
