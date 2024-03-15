@@ -7,10 +7,10 @@
 ; main
 Init()
 
-M.Register(CONS.CHECK, CB_CHECK, (*) => NG.skip.check)
-M.Register(CONS.BACK, CB_BACK, (*) => NG.skip.back)
-M.Register(CONS.MISSION, CB_MISSION, (*) => NG.skip.mission)
-M.Register(CONS.AUTOKILL, CB_AUTOKILL, (*) => NG.autokill.all)
+M.Register(CONS.CHECK, CB_CHECK, (*) => P.skip.check)
+M.Register(CONS.BACK, CB_BACK, (*) => P.skip.back)
+M.Register(CONS.MISSION, CB_MISSION, (*) => P.skip.mission)
+M.Register(CONS.AUTOKILL, CB_AUTOKILL, (*) => P.autokill.all)
 
 M.Run()
 
@@ -21,17 +21,17 @@ Init() {
 
     Refresh()
 
-    NG.hotkey.BindReset(OnReset, "]")
-    NG.hotkey.BindExit(OnClose, "[")
-    NG.hotkey.BindSellSigils(SellSigilsAndLottery, "\")
-    NG.hotkey.BindSellCharms(SellCharmAndLottery, "=")
+    P.hotkey.BindReset(OnReset, "]")
+    P.hotkey.BindExit(OnClose, "[")
+    P.hotkey.BindSellSigils(SellSigilsAndLottery, "\")
+    P.hotkey.BindSellCharms(SellCharmAndLottery, "=")
 
-    NG.OnClose(OnClose)
-    NG.OnGameNameChange((edit, *) => (
+    P.OnClose(OnClose)
+    P.OnGameNameChange((edit, *) => (
         M.name := edit.Value
         Refresh()
     ))
-    NG.Show()
+    P.Show()
 }
 
 ; call backs on search found
@@ -62,7 +62,7 @@ CB_MISSION(*) {
 }
 
 CB_AUTOKILL(*) {
-    v := NG.autokill
+    v := P.autokill
 
     AUTOKILL_ENTER()
     loop {
@@ -83,7 +83,7 @@ CB_AUTOKILL(*) {
 }
 
 AUTOKILL_ENTER() {
-    v := NG.autokill
+    v := P.autokill
 
     if v.guard {
         SendEvent("{q down}")
@@ -97,7 +97,7 @@ AUTOKILL_ENTER() {
 }
 
 AUTOKILL_LEAVE() {
-    v := NG.autokill
+    v := P.autokill
 
     if v.guard {
         SendEvent("{q up}")
@@ -135,10 +135,10 @@ AUTOKILL_R_AND_G() {
 
 Refresh() {
     t := DATA.times
-    NG.UpdateReport(t.check, t.back, t.mission)
+    P.UpdateReport(t.check, t.back, t.mission)
 
     w := 0
     h := 0
     M.GetGameWindow(&w, &h)
-    NG.UpdateWindowInfo(w, h)
+    P.UpdateWindowInfo(w, h)
 }

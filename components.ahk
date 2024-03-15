@@ -30,7 +30,7 @@ CONS := {
 ; dynamic global vars
 
 M := Matcher(GAME_NAME)
-NG := Panel(GAME_NAME)
+P := Panel(GAME_NAME)
 
 DATA := {
     times: {

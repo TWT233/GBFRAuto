@@ -10,7 +10,7 @@ GUARD := (len := 500) => (Sleep(len))
 SellCharmAndLottery(*) {
     FilterToMain()
     i := 0
-    while (NG.sell.rounds == 0 || i < NG.sell.rounds)
+    while (P.sell.rounds == 0 || i < P.sell.rounds)
     {
         MainToSell()
         SellCharms()
@@ -34,7 +34,7 @@ SellCharms() {
 SellSigilsAndLottery(*) {
     FilterToMain()
     i := 0
-    while (NG.sell.rounds == 0 || i < NG.sell.rounds)
+    while (P.sell.rounds == 0 || i < P.sell.rounds)
     {
         MainToSell()
         ret := SellSigils()
