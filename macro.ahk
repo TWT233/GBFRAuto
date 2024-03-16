@@ -37,10 +37,7 @@ SellSigilsAndLottery(*) {
     while (P.sell.rounds == 0 || i < P.sell.rounds)
     {
         MainToSell()
-        ret := SellSigils()
-        if ret == 1 {
-            return
-        }
+        SellSigils()
         SellToLottery()
         LotteryToLV3(M)
         DoLottery(M)
@@ -51,13 +48,8 @@ SellSigilsAndLottery(*) {
 
 SellSigils() {
     EventClick("Tab", , , GAP)
-    ret := M.Match(CONS.NoAvailableSigil)
-    if ret == 1 {
-        return 1
-    }
     Sell()
     GUARD()
-    return 0
 }
 
 FilterToMain() {

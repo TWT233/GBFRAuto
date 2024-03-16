@@ -24,10 +24,10 @@ CONS := {
         CHAINPixel(1599, 892),
     ),
     ; misc
-    LotteryLV3: Cond().Imgs(, "./assets/LotteryLV3.png"),
-    LotteryFinish: Cond().Imgs(, "./assets/LotteryFinish.png"),
-    TicketWithSigil: Cond().Imgs(, "./assets/TicketWithSigil.png"),
-    NoAvailableSigil: Cond().Imgs(32, "./assets/NoAvailableSigil.png"),
+    LotteryLV3: Cond().Pixels(10,
+        Pixel(Color(113, 98, 78), 600, 380, 1440),
+        Pixel(Color(113, 98, 78), 600, 525, 1440),
+    ),
     SieroTop: Cond().Imgs(, "./assets/SieroTop.png"),
 }
 
