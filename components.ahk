@@ -15,10 +15,10 @@ CONS := {
     MISSION: Cond().Imgs(, "./assets/MISSION.png"),
     AUTOKILL: Cond().Pixels(,
         WhitePixel2K(510, 1325),
-        WhitePixel2K(630, 1189),
         WhitePixel2K(377, 1197),
         WhitePixel2K(510, 1060),
     ),
+    CHAIN: Cond().Imgs(, "./assets/CHAIN.png"),
     ; misc
     LotteryLV3: Cond().Imgs(, "./assets/LotteryLV3.png"),
     LotteryFinish: Cond().Imgs(, "./assets/LotteryFinish.png"),

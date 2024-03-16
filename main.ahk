@@ -77,7 +77,7 @@ CB_AUTOKILL(*) {
         } else {
             Sleep(500)
         }
-        AUTOKILL_ROUTINED(v)
+        AUTOKILL_ROUTINED(M, v)
     } until (M.Match(CONS.AUTOKILL) == 0)
     AUTOKILL_LEAVE()
 }
@@ -110,12 +110,20 @@ AUTOKILL_LEAVE() {
     }
 }
 
-AUTOKILL_ROUTINED(v) {
+AUTOKILL_ROUTINED(M, v) {
     if v.skills {
         AUTOKILL_SKILLS()
     }
-    if v.r_and_g {
-        AUTOKILL_R_AND_G()
+    if v.r {
+        EventClick("r", 20, , 20)
+    }
+    if v.g {
+        EventClick("g", 20, , 20)
+    }
+    if v.chain {
+        if M.Match(CONS.CHAIN) == true {
+            EventClick("g", 20, , 20)
+        }
     }
 }
 
@@ -124,11 +132,6 @@ AUTOKILL_SKILLS() {
     EventClick("2", 20, , 20)
     EventClick("3", 20, , 20)
     EventClick("4", 20, , 20)
-}
-
-AUTOKILL_R_AND_G() {
-    EventClick("r", 20, , 20)
-    EventClick("g", 20, , 20)
 }
 
 ; util functions

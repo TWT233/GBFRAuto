@@ -21,10 +21,10 @@ class Panel {
     __New(game_name) {
         this.root.SetFont("s10")
         this.window.Attach(this.root, 10, 9, game_name)
-        this.skip.Attach(this.root, 10, 90)
-        this.autokill.Attach(this.root, 140, 90)
-        this.sell.Attach(this.root, 10, 180)
-        this.hotkey.Attach(this.root, 270, 9)
+        this.skip.Attach(this.root, 140, 90)
+        this.sell.Attach(this.root, 140, 180)
+        this.hotkey.Attach(this.root, 10, 90)
+        this.autokill.Attach(this.root, 270, 9)
 
         this.bar := this.root.Add("StatusBar", , "继续挑战 0 | 奖励确认 0 | 任务结算 0")
     }

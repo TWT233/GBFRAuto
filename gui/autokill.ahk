@@ -9,10 +9,12 @@ class PanelAutoKill {
     aim := 0
     forward := 0
     skills := 0
-    r_and_g := 0
+    r := 0
+    g := 0
+    chain := 0
 
     Attach(g, x, y) {
-        g.Add("GroupBox", "Section w120 h180 x" x " y" y, "自动战斗相关")
+        g.Add("GroupBox", "Section w120 h220 x" x " y" y, "自动战斗相关")
 
         g.Add("CheckBox", "xs9 ys20", "总开关")
             .OnEvent("Click", (cb, *) => (this.all := cb.Value))
@@ -35,7 +37,13 @@ class PanelAutoKill {
         g.Add("CheckBox", , "自动使用技能")
             .OnEvent("Click", (cb, *) => (this.skills := cb.Value))
 
-        g.Add("CheckBox", , "自动连锁奥义")
-            .OnEvent("Click", (cb, *) => (this.r_and_g := cb.Value))
+        g.Add("CheckBox", , "自动连锁")
+            .OnEvent("Click", (cb, *) => (this.r := cb.Value))
+
+        g.Add("CheckBox", , "有奥义就开")
+            .OnEvent("Click", (cb, *) => (this.g := cb.Value))
+
+        g.Add("CheckBox", , "有奥义等接")
+            .OnEvent("Click", (cb, *) => (this.chain := cb.Value))
     }
 }
