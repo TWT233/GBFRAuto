@@ -71,9 +71,7 @@ CB_AUTOKILL(*) {
                 EventClick("LButton", 15, , 15)
             }
         } else if v.seya {
-            loop 20 {
-                EventClick("RButton", 15, , 15)
-            }
+            EventClick("RButton", 15, , 15)
         } else {
             Sleep(500)
         }
@@ -121,9 +119,7 @@ AUTOKILL_ROUTINED(M, v) {
         EventClick("g", 20, , 20)
     }
     if v.chain {
-        if M.Match(CONS.CHAIN) == true {
-            EventClick("g", 20, , 20)
-        }
+        GuardLoop(() => (!M.Match(CONS.CHAIN)), () => (EventClick("g", 20, , 20)), () => 0)
     }
 }
 

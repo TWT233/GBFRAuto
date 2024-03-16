@@ -47,3 +47,7 @@ OnClose(*) {
 WhitePixel2K(x, y) {
     return Pixel(Color(0xFF, 0xFF, 0xFF), x, y, 1440)
 }
+
+CHAINPixel(x, y) {
+    return Pixel(Color(160, 255, 255), x, y, 1440)
+}

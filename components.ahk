@@ -18,7 +18,11 @@ CONS := {
         WhitePixel2K(377, 1197),
         WhitePixel2K(510, 1060),
     ),
-    CHAIN: Cond().Imgs(, "./assets/CHAIN.png"),
+    CHAIN: Cond().Pixels(40,
+        CHAINPixel(1274, 110),
+        CHAINPixel(1156, 866),
+        CHAINPixel(1599, 892),
+    ),
     ; misc
     LotteryLV3: Cond().Imgs(, "./assets/LotteryLV3.png"),
     LotteryFinish: Cond().Imgs(, "./assets/LotteryFinish.png"),
