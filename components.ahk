@@ -8,7 +8,7 @@
 
 GAME_NAME := "Granblue Fantasy: Relink"
 
-CONS := {
+CONDS := {
     ; main match cond
     CHECK: Cond().Imgs(, "./assets/CHECK.png"),
     BACK: Cond().Imgs(, "./assets/BACK.png", "./assets/BACK2.png"),

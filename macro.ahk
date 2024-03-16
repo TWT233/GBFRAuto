@@ -82,7 +82,7 @@ SellToLottery() {
 }
 
 LotteryToLV3(M) {
-    GuardLoop(() => (M.Match(CONS.LotteryLV3)),
+    GuardLoop(() => (M.Match(CONDS.LotteryLV3)),
     () => (EventClick("s", , , SLOW_GAP)), GUARD)
     GUARD()
 }
@@ -95,7 +95,7 @@ DoLottery(M) {
 }
 
 LotteryToMain() {
-    while (!M.Match(CONS.SieroTop)) {
+    while (!M.Match(CONDS.SieroTop)) {
         EventClick("RButton", , , SLOW_GAP)
     }
     EventClick("w", , , GAP)

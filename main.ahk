@@ -7,10 +7,10 @@
 ; main
 Init()
 
-M.Register(CONS.CHECK, CB_CHECK, (*) => P.skip.check)
-M.Register(CONS.BACK, CB_BACK, (*) => P.skip.back)
-M.Register(CONS.MISSION, CB_MISSION, (*) => P.skip.mission)
-M.Register(CONS.AUTOKILL, CB_AUTOKILL, (*) => P.autokill.all)
+M.Register(CONDS.CHECK, CB_CHECK, (*) => P.skip.check)
+M.Register(CONDS.BACK, CB_BACK, (*) => P.skip.back)
+M.Register(CONDS.MISSION, CB_MISSION, (*) => P.skip.mission)
+M.Register(CONDS.AUTOKILL, CB_AUTOKILL, (*) => P.autokill.all)
 
 M.Run()
 
@@ -55,7 +55,7 @@ CB_CHECK(*) {
 CB_MISSION(*) {
     loop {
         EventClick("LButton", , , 200)
-    } until (M.Match(CONS.MISSION) == 0)
+    } until (M.Match(CONDS.MISSION) == 0)
 
     DATA.times.mission++
     Refresh()
@@ -76,7 +76,7 @@ CB_AUTOKILL(*) {
             Sleep(500)
         }
         AUTOKILL_ROUTINED(M, v)
-    } until (M.Match(CONS.AUTOKILL) == 0)
+    } until (M.Match(CONDS.AUTOKILL) == 0)
     AUTOKILL_LEAVE()
 }
 
@@ -119,7 +119,7 @@ AUTOKILL_ROUTINED(M, v) {
         EventClick("g", 20, , 20)
     }
     if v.chain {
-        GuardLoop(() => (!M.Match(CONS.CHAIN)), () => (EventClick("g", 20, , 20)), () => 0)
+        GuardLoop(() => (!M.Match(CONDS.CHAIN)), () => (EventClick("g", 20, , 20)), () => 0)
     }
 }
 
